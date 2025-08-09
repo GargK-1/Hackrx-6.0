@@ -1,0 +1,21 @@
+# File: requirements.txt (Fully Locked and Stable)
+
+# Pin FastAPI and Pydantic to a known compatible set
+fastapi
+pydantic
+
+# Pin ALL LangChain libraries to a compatible set from early 2024
+langchain
+langchain-core
+langchain-community
+langchain-openai
+langchain-huggingface
+
+# Other dependencies
+uvicorn[standard]
+faiss-cpu
+sentence-transformers
+PyMuPDF
+pymupdf4llm
+python-dotenv
+requests
