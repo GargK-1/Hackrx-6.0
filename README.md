@@ -21,8 +21,8 @@ The entire process is orchestrated to deliver precise answers by grounding the L
 2.  **PDF Processing & Caching**:
     * The system first checks if a FAISS index for this URL already exists locally.
     * If not, `Reading_PDFBlobURLsIMPROVED.py` downloads the PDF, converts it to structured Markdown, and splits it into manageable chunks.
-    * `embedding_search_savi.py` then uses a Hugging Face model (`all-MiniLM-L6-v2`) to create vector embeddings for these chunks and saves them in a local FAISS index for future use.
-3.  **Query Parsing**: `llm_parser_savi.py` takes each user question and sends it to an LLM (e.g., GPT-3.5 Turbo) to be broken down into a structured object containing keywords and sub-queries.
+    * `embedding_search.py` then uses a Hugging Face model (`all-MiniLM-L6-v2`) to create vector embeddings for these chunks and saves them in a local FAISS index for future use.
+3.  **Query Parsing**: `llm_parser.py` takes each user question and sends it to an LLM (e.g., GPT-3.5 Turbo) to be broken down into a structured object containing keywords and sub-queries.
 4.  **Weighted Retrieval**: For each sub-query, the system performs a vector search on the FAISS index. The identified `key_word` from the parsing step is used to mathematically boost the relevance of chunks containing that term.
 5.  **Answer Generation**: The top-ranked document chunks are passed as context to the `logic_evaluation.py` module. It uses a final, robustly prompted LLM call to synthesize a coherent and accurate answer based *only* on the provided information.
 6.  **API Response**: The FastAPI server returns a JSON object containing the list of generated answers.
@@ -70,7 +70,7 @@ You can run the project in two ways: as a standalone script or as a web server.
 To test the full pipeline on a predefined set of questions, you can directly execute the main script. This is useful for debugging and development.
 
 ```bash
-python main_pipeline_savi2.py
+python main_pipeline.py
 ```
 This will process the default PDF URL and questions defined in the `if __name__ == "__main__":` block of the script.
 
@@ -101,12 +101,12 @@ curl -X POST "[http://127.0.0.1:8000/api/v1/hackrx/run](http://127.0.0.1:8000/ap
 
 ```
 .
-├── server_test.py               # FastAPI server entry point and API logic
-├── main_pipeline_savi2.py       # Main orchestration script for local execution
+├── server_test.py                 # FastAPI server entry point and API logic
+├── main_pipeline.py               # Main orchestration script for local execution
 ├── Reading_PDFBlobURLsIMPROVED.py # Handles PDF download, parsing to Markdown, and chunking
-├── embedding_search_savi.py     # Manages FAISS vector store creation, loading, and weighted search
-├── llm_parser_savi.py           # Logic for parsing user questions into structured queries
-├── logic_evaluation.py          # Generates the final answer from retrieved context
-├── requirements.txt             # Project dependencies
-└── .env                         # Environment variables (not committed)
+├── embedding_search.py            # Manages FAISS vector store creation, loading, and weighted search
+├── llm_parser.py                  # Logic for parsing user questions into structured queries
+├── logic_evaluation.py            # Generates the final answer from retrieved context
+├── requirements.txt               # Project dependencies
+└── .env                           # Environment variables (not committed)
 ```
