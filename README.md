@@ -1,6 +1,6 @@
 # Intelligent Policy Q&A System: An Advanced RAG Pipeline
 
-![Project Banner](https://i.imgur.com/your-image-url.png) This project implements a sophisticated **Retrieval-Augmented Generation (RAG)** pipeline designed to answer complex, multi-part questions about PDF documents, specifically tailored for dense content like insurance policies. It exposes its functionality through a robust FastAPI web server, optimized for performance.
+This project implements a sophisticated **Retrieval-Augmented Generation (RAG)** pipeline designed to answer complex, multi-part questions about PDF documents, specifically tailored for dense content like insurance policies. It exposes its functionality through a robust FastAPI web server, optimized for performance.
 
 The system intelligently parses user queries, retrieves the most relevant information from a document using a keyword-boosted vector search, and generates accurate, context-aware answers.
 
