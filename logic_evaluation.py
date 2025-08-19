@@ -15,7 +15,7 @@ from langchain_core.documents import Document
 from typing import List
 
 # Import the StructuredQuery class from your parser file
-from llm_parser_savi import StructuredQuery
+from llm_parser import StructuredQuery
 
 # The FinalAnswer Pydantic model remains the same
 class FinalAnswer(BaseModel):
