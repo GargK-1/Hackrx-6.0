@@ -18,9 +18,9 @@ from pydantic import BaseModel
 from typing import List, AsyncGenerator
 from contextlib import asynccontextmanager
 
-from main_pipeline_savi2 import run_full_pipeline # import your pipeline
+from main_pipeline import run_full_pipeline # import your pipeline
 from Reading_PDFBlobURLsIMPROVED import PDFProcessor
-from llm_parser_savi import QueryParser
+from llm_parser import QueryParser
 from embedding_search_savi import VectorStoreManager
 from clause_matching import DocumentReRanker
 from logic_evaluation import AnswerGenerator
