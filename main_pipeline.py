@@ -16,8 +16,8 @@ from langchain_community.vectorstores import FAISS
 
 # Import custom classes
 from Reading_PDFBlobURLsIMPROVED import PDFProcessor
-from llm_parser_savi import QueryParser, StructuredQuery
-from embedding_search_savi import VectorStoreManager, weighted_similarity_search
+from llm_parser import QueryParser, StructuredQuery
+from embedding_search import VectorStoreManager, weighted_similarity_search
 from clause_matching import DocumentReRanker
 from logic_evaluation import AnswerGenerator
 
